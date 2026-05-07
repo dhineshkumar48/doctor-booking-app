@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+@import "tailwindcss";
+
+* {
+  font-family: "Outfit", serif;
+}
+
+:root {
+  --primary-color: #5f6fff;
+}
+
+.bg-primary {
+  background-color: var(--primary-color);
+}
+
+.hover\:bg-primary:hover {
+  background-color: var(--primary-color); /* Same as bg-primary */
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.border-primary {
+  border-color: var(--primary-color);
+}
+
+::-webkit-scrollbar {
+  @apply hidden;
+}

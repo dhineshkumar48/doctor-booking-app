@@ -1,0 +1,8 @@
+**/node_modules
+**/dist
+**/.cache
+*.log
+*.env
+frontend/.env
+admin/.env
+backend/.env

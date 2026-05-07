@@ -1,0 +1,57 @@
+services:
+  - type: web_service
+    name: doctor-booking-backend
+    env: node
+    region: oregon
+    plan: free
+    branch: main
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm run start
+    envVars:
+      - key: MONGODB_URL
+        value: mongodb+srv://<username>:<password>@cluster0.mongodb.net
+        sync: false
+      - key: CLOUDINARY_NAME
+        value: your_cloudinary_name
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        value: your_cloudinary_api_key
+        sync: false
+      - key: CLOUDINARY_SECRET_KEY
+        value: your_cloudinary_secret_key
+        sync: false
+      - key: JWT_SECRET
+        value: change_this_secret
+        sync: false
+      - key: ADMIN_EMAIL
+        value: admin@prescripto.com
+        sync: false
+      - key: ADMIN_PASSWORD
+        value: admin123
+        sync: false
+
+  - type: static_site
+    name: doctor-booking-frontend
+    env: static
+    region: oregon
+    plan: free
+    branch: main
+    buildCommand: cd frontend && npm install && npm run build
+    publishPath: frontend/dist
+    envVars:
+      - key: VITE_BACKEND_URL
+        value: https://doctor-booking-backend.onrender.com
+        sync: false
+
+  - type: static_site
+    name: doctor-booking-admin
+    env: static
+    region: oregon
+    plan: free
+    branch: main
+    buildCommand: cd admin && npm install && npm run build
+    publishPath: admin/dist
+    envVars:
+      - key: VITE_BACKEND_URL
+        value: https://doctor-booking-backend.onrender.com
+        sync: false
